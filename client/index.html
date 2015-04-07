@@ -15,6 +15,15 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
+      <form>
+      <textarea class="userNameBox" placeholder="username" rows='1' cols='10'></textarea>
+      <textarea class="roomNameBox" placeholder="roomName" rows='1' cols='10'></textarea>
+      <textarea class="messageBox" placeholder="Message..." rows='10' cols='50'></textarea>
+      <div>
+        <button type='button' onclick="app.submitMessage()">Send</button>
+        <button type='button' onclick="app.goToRoom()">Enter Room</button>
+      </div>
+      </form>
       <div id="roomSelect">
 
       </div>
