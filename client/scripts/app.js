@@ -19,6 +19,7 @@ app.send = function(message){
   });
 };
 
+var test;
 app.fetch = function(address){
   $.ajax({
     url: address,
@@ -50,12 +51,16 @@ app.addMessage = function(message){
 
 app.displayMessages = function(data){
   for(var i = 0; i < data.results.length; i++){
-    app.addMessage(data.results[i]);
+    //Check regex
+    var reg = /\<\/\D+\>/;
+    if(!reg.test(data.results[i]['text']) && !reg.test(data.results[i]['username']) && !reg.test(data.results[i]['roomname']) &&
+      data.results[i]['roomname'] && data.results[i]['username'] && data.results[i]['text'] && data.results[i]['roomname'].length<10 &&
+      data.results[i]['text'].length<100 && data.results[i]['username'].length<20){
+      console.dir(data.results[i]);
+      app.addMessage(data.results[i]);
+    }
   }
 };
-
-
-
 
 app.addRoom = function(newRoom){
   var userName = '<h3></h3><span>' + newRoom + '</span>';
